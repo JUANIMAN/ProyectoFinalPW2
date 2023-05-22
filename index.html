@@ -1,34 +1,94 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
 	<title>Inicio</title>
 </head>
+
 <body>
+	<div class="container">
+		<div class="forms-container">
+			<div class="signin-signup">
+				<form action="connection/login.php" method="get" class="sign-in-form">
+					<h2 class="title">Iniciar sesión</h2>
+					<div class="input-field">
+						<i class="fas fa-user"></i>
+						<input name="user" type="text" placeholder="Username" />
+					</div>
+					<div class="input-field">
+						<i class="fas fa-lock"></i>
+						<input name="pass" type="password" placeholder="Contraseña" />
+					</div>
+					<input type="submit" value="Entrar" class="btn solid" />
 
-<header>
-	Administrador de Usuarios
-</header>
-	<h1>Por favor inicia sesion o registrate</h1>
-	<h1>Login</h1>
-    <span>or <a href="admin/add_user.php">SignUp</a></span>
+					<p class="social-text">O inicie sesión utilizando plataformas sociales</p>
+					<div class="social-media">
+						<a href="#" class="social-icon">
+							<i class="fab fa-facebook-f"></i>
+						</a>
+						<a href="#" class="social-icon">
+							<i class="fab fa-twitter"></i>
+						</a>
+						<a href="#" class="social-icon">
+							<i class="fab fa-google"></i>
+						</a>
+						<a href="#" class="social-icon">
+							<i class="fab fa-linkedin-in"></i>
+						</a>
+					</div>
+				</form>
 
-    <form action="connection/login.php" method="get">
-      <input name="user" type="text" placeholder="Introduce tu nickname">
-      <input name="pass" type="text" placeholder="Introduce tu contraseña">
-      <input type="submit" value="Entrar">
-   </form>
+				<form action="admin/add_userdb.php" method="get" class="sign-up-form">
+					<h2 class="title">Crear cuenta</h2>
+					<div class="input-field">
+						<i class="fas fa-user"></i>
+						<input name="nombre" type="text" placeholder="Nombre" />
+					</div>
+					<div class="input-field">
+						<i class="fas fa-user"></i>
+						<input name="apellidop" type="text" placeholder="Apellido paterno" />
+					</div>
+					<div class="input-field">
+						<i class="fas fa-user"></i>
+						<input name="apellidom" type="text" placeholder="Apellido materno" />
+					</div>
+					<div class="input-field">
+						<i class="fas fa-user"></i>
+						<input name="user" type="text" placeholder="Username" />
+					</div>
+					<div class="input-field">
+						<i class="fas fa-envelope"></i>
+						<input name="email" type="email" placeholder="Correo" />
+					</div>
+					<div class="input-field">
+						<i class="fas fa-lock"></i>
+						<input name="pass" type="password" placeholder="Contraseña" />
+					</div>
+					<input name="tipo" type="hidden" value="2" />
+					<input type="submit" value="Registrar" class="btn solid" />
 
-	<!-- <form method="get" action="connection/login.php">
-		<label for="nombre de usuario">Nombre de usuario:</label>
-		<input type="text" name="user">
-		<label for="contraseña">Contraseña:</label>
-		<input type="text" name="pass">
-		<input type="submit" value="Iniciar seción">
-	</form> -->
-
+					<p class="social-text">O regístrese utilizando plataformas sociales</p>
+					<div class="social-media">
+						<a href="#" class="social-icon">
+							<i class="fab fa-facebook-f"></i>
+						</a>
+						<a href="#" class="social-icon">
+							<i class="fab fa-twitter"></i>
+						</a>
+						<a href="#" class="social-icon">
+							<i class="fab fa-google"></i>
+						</a>
+						<a href="#" class="social-icon">
+							<i class="fab fa-linkedin-in"></i>
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
 </body>
+
 </html>
