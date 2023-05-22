@@ -1,30 +1,29 @@
 <?php
 session_start();
-if (@$_SESSION['admin']==true) {
+if (@$_SESSION['admin'] == true) {
+  include 'cabecera.php';
+?>
 
-	include 'cabecera.php';
+  <div id="fname">
+    Hola <?php echo $_SESSION['fname'] ?>
+  </div>
 
-	?>
+  <div id="titulo">Agregar usuarios</div>
+  <form action="add_userdb.php" method="get">
+    <input name="nombre" type="text" placeholder="Nombre">
+    <input name="apellidop" type="text" placeholder="Apellido paterno">
+    <input name="apellidom" type="text" placeholder="Apellido materno">
+    <input name="user" type="text" placeholder="Username">
+    <input name="email" type="email" placeholder="Correo">
+    <input name="pass" type="password" placeholder="Contraseña">
+    <select name="tipo">
+      <option value=1>Administrador</option>
+      <option value=2 selected>Usuario</option>
+    </select>
+    <input type="submit" value="Registrar usuario">
+  </form>
 
-<div id="username">
-	Hola administrador <?php echo $_SESSION['username']?>
-</div>
-
-<h1>SignUp</h1>
-    <span>or <a href="..">Login</a></span>
-
-    <form action="add_userdb.php" method="get">
-      <input name="nombre" type="text" placeholder="Introduce tu nombre">
-      <input name="apellidop" type="text" placeholder="Introduce tu apellido paterno">
-      <input name="apellidom" type="text" placeholder="Introduce tu apellido materno">
-      <input name="nick" type="text" placeholder="Introduce un nickname">
-      <input name="pass" type="text" placeholder="Introduce una contraseña">
-      <select name="tipo">
-		<option value=1>Administrador</option>
-		<option value=2 selected>Usuario</option>
-		</select>
-      <input type="submit" value="Registrar usuario">
-    </form>
+  <?php include 'pie.php'; ?>
 <?php
 }
 //session_destroy();
