@@ -1,0 +1,162 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+form label {
+    width: 90%;
+    padding: 5px 5px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    outline: none;
+    padding: 20px;
+    display: block;
+    width: 300px;
+    border-radius: 3px;
+    border: 1px solid #eee;
+    margin: 20px auto;
+}
+
+input[type="submit"] {
+    padding: 10px;
+    color: #fff;
+    background: #0098cb;
+    width: 320px;
+    margin: 20px auto;
+    margin-top: 0;
+    border: 0;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #00b8eb;
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.custom-table th,
+.custom-table td {
+    padding: 8px;
+    text-align: left;
+}
+
+.custom-table th {
+    background-color: #f2f2f2;
+}
+
+.custom-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.custom-table tr:hover {
+    background-color: #e5e5e5;
+}
+
+.btntable {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.btn-edit:hover {
+    background-color: #28a745;
+}
+
+.btn-delete:hover {
+    background-color: #dc3545;
+}
+
+.options {
+    display: flex;
+}
+
+.options form {
+    margin-right: 5px;
+}
+
+#username {
+    text-align: right;
+    font-size: 25px;
+    padding: 10px;
+}
+
+#titulo {
+    text-align: center;
+    font-size: 30px;
+    padding: 10px;
+    text-decoration: underline gray;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: right;
+}
+
+header nav ul li {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+}
+
+header nav ul li a:hover {
+    background-color: #555;
+}
+
+header nav ul li a.logout:hover {
+    background-color: #ff0000;
+}
+
+footer#main-footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer#main-footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer#main-footer a:hover {
+    text-decoration: underline;
+}
