@@ -10,12 +10,11 @@ include "connection.php";
 $consulta = "SELECT * FROM files.usuario WHERE user='" . $usuariodado . "'";
 $resultado = $conn->query($consulta);
 
-while ($row = $resultado->fetch_row()) {
-	$nombrec = $row[1] . " " . $row[2] . " " . $row[3];
-	$userdb = $row[4];
-	$passdb = $row[6];
-	$tipodb = $row[7];
-}
+$row = $resultado->fetch_assoc();
+$nombrec = $row['nombre'] . " " . $row['apellido_paterno'] . " " . $row['apellido_materno'];
+$userdb = $row['user'];
+$passdb = $row['pass'];
+$tipodb = $row['tipo'];
 
 $entrada = false;
 
