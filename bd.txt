@@ -1,0 +1,18 @@
+CREATE DATABASE files;
+
+USE files;
+
+CREATE TABLE usuario (
+  idusuario INT NOT NULL AUTO_INCREMENT,
+  nombre varchar(45),
+  apellido_paterno varchar(45),
+  apellido_materno varchar(45),
+  nick varchar(45) NOT NULL,
+  pass varchar(45) NOT NULL,
+  tipo int,
+  PRIMARY KEY (idusuario)
+); 
+
+INSERT INTO usuario (nombre, apellido_paterno, apellido_materno, nick, pass, tipo) VALUES ('Ana', 'Aviles', 'Arriaga', 'ananick', 'ana123',1)
+
+INSERT INTO usuario (nombre, apellido_paterno, apellido_materno, nick, pass, tipo) VALUES ('Brenda', 'Benitez', 'Barron', 'brendanick', 'brenda123',2)
