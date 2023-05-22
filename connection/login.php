@@ -7,40 +7,38 @@ $clavedada = $_REQUEST['pass'];
 
 include "connection.php";
 
-$consulta = "SELECT * FROM files.usuario WHERE nick='".$usuariodado."'";
-
+$consulta = "SELECT * FROM files.usuario WHERE user='" . $usuariodado . "'";
 $resultado = $conn->query($consulta);
 
 while ($row = $resultado->fetch_row()) {
-	$nombrec = $row[1]." ".$row[2]." ".$row[3];
-	echo $nombrec;
-	$nickdb = $row[4];
-	$passdb = $row[5];
-	$tipodb = $row[6];
+	$nombrec = $row[1] . " " . $row[2] . " " . $row[3];
+	$userdb = $row[4];
+	$passdb = $row[6];
+	$tipodb = $row[7];
 }
 
 $entrada = false;
 
-if ($usuariodado==$nickdb && $clavedada==$passdb) {
-	if ($tipodb==1) {
+if ($usuariodado == $userdb && $clavedada == $passdb) {
+	if ($tipodb == 1) {
 		$entrada = true;
 
 		session_start();
 		$_SESSION['admin'] = true;
-		$_SESSION['username'] = $nombrec;
+		$_SESSION['fname'] = $nombrec;
 
-		header("Location:http://localhost/files/admin/add_user.php");
-	} elseif ($tipodb==2) {
+		header("Location: ../admin/consultar.php");
+	} elseif ($tipodb == 2) {
 		$entrada = true;
 
 		session_start();
-		$_SESSION['user'] = true;
-		$_SESSION['username'] = $nombrec;
+		$_SESSION['admin'] = false;
+		$_SESSION['fname'] = $nombrec;
 
-		header("Location:http://localhost/files/admin/misasignaciones.php");
+		header("Location: ../admin/misasignaciones.php");
 	}
 }
 
-if ($entrada==false) {
-	header("Location:http://localhost/files");
+if ($entrada == false) {
+	header("Location: ../index.html");
 }
