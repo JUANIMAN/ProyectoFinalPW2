@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 $nm = $_REQUEST['nombre'];
 $ap = $_REQUEST['apellidop'];
 $am = $_REQUEST['apellidom'];
@@ -10,13 +8,33 @@ $em = $_REQUEST['email'];
 $pw = $_REQUEST['pass'];
 $ti = $_REQUEST['tipo'];
 
-// Verificar si los campos requeridos están vacíos
+include "../connection/connection.php";
+
 if (empty($nm) || empty($ap) || empty($un) || empty($em) || empty($pw)) {
-	echo "<script>alert('Por favor, llene todos los campos.');</script>
-	<script>window.history.back();</script>";
+	echo "<script>alert('Por favor, llene todos los campos.');</script>";
+	echo "<script>window.history.back();</script>";
 } else {
-	$consulta = "
-        INSERT INTO files.usuario(
+	$userQuery = "SELECT * FROM files.usuario WHERE user='" . $un . "' LIMIT 1";
+	$emailQuery = "SELECT * FROM files.usuario WHERE email='" . $em . "' LIMIT 1";
+
+	$userResult = $conn->query($userQuery);
+	$emailResult = $conn->query($emailQuery);
+
+	$userExists = ($userResult && $userResult->num_rows > 0);
+	$emailExists = ($emailResult && $emailResult->num_rows > 0);
+
+	if ($userExists && $emailExists) {
+		echo "<script>alert('El username y correo introducidos ya existen, pruebe con otros o inicie sesión');</script>";
+		echo "<script>window.history.back();</script>";
+	} elseif ($userExists) {
+		echo "<script>alert('El username introducido ya existe, pruebe con otro o inicie sesión');</script>";
+		echo "<script>window.history.back();</script>";
+	} elseif ($emailExists) {
+		echo "<script>alert('El correo introducido ya existe, pruebe con otro o inicie sesión');</script>";
+		echo "<script>window.history.back();</script>";
+	} else {
+		$adduser = "
+		INSERT INTO files.usuario(
             nombre,
             apellido_paterno,
             apellido_materno,
@@ -34,17 +52,17 @@ if (empty($nm) || empty($ap) || empty($un) || empty($em) || empty($pw)) {
              " . $ti . "
         )";
 
-	include "../connection/connection.php";
-	if (mysqli_query($conn, $consulta)) {
-		if (@$_SESSION['admin'] == true) {
-			echo "<script>confirm('Usuario agregado.');</script>
-            <meta http-equiv='refresh' content='0;url=consultar.php'>";
+		if (mysqli_query($conn, $adduser)) {
+			if (@$_SESSION['admin'] == true) {
+				echo "<script>confirm('Usuario agregado.');</script>";
+				echo "<meta http-equiv='refresh' content='0;url=consultar.php'>";
+			} else {
+				echo "<script>confirm('Cuenta creada. Inicie sesión.');</script>";
+				echo "<meta http-equiv='refresh' content='0;url=../index.html'>";
+			}
 		} else {
-			echo "<script>confirm('Cuenta creada. Inicie sesión.');</script>
-            <meta http-equiv='refresh' content='0;url=../index.html'>";
+			echo "<script>confirm('No se pudo acceder a la base de datos.');</script>";
+			echo "<meta http-equiv='refresh' content='0;url=../index.html'>";
 		}
-	} else {
-		echo "<script>confirm('No se pudo acceder a la base de datos.');</script>
-        <meta http-equiv='refresh' content='0;url=../index.html'>";
 	}
 }
