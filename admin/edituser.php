@@ -9,15 +9,10 @@ if (@$_SESSION["admin"] == true) {
 	</div>
 
 	<?php
-
 	$idreceiveduser = $_GET['idusuario'];
-
 	include "../connection/connection.php";
-
 	$consulta = "SELECT * FROM files.usuario WHERE idusuario='" . $idreceiveduser . "'";
-
 	$resultado = $conn->query($consulta);
-
 	$obj = $resultado->fetch_object();
 	?>
 
@@ -59,7 +54,6 @@ if (@$_SESSION["admin"] == true) {
 			}
 			?>
 		</select>
-
 		<input type="submit" value="Actualizar usuario" />
 	</form>
 
