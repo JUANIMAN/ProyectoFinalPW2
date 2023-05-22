@@ -1,70 +1,75 @@
 <?php
-
-include "../connection/connection.php";
-
-include "cabecera.php";
-
+session_start();
+if (@$_SESSION['admin'] == true) {
+	include "../connection/connection.php";
+	include 'cabecera.php';
 ?>
 
-<div id="titulo">Consultar usuarios</div>
+	<div id="fname">
+		Hola <?php echo $_SESSION['fname'] ?>
+	</div>
 
-<?php
+	<div id="titulo">Consultar usuarios</div>
 
-$consulta = "SELECT * FROM files.usuario";
-$resultado = $conn->query($consulta);
+	<?php
 
-//$obj = $resultado->fetch_object();
+	$consulta = "SELECT * FROM files.usuario";
+	$resultado = $conn->query($consulta);
 
-//echo $obj->primer_apellido;
-
-printf("<table border='2'>
-		<thead>
-		<tr>
-			<th>nombre</th>
-			<th>apellido paterno</th>
-			<th>apellido materno</th>
-			<th>nickname</th>
-			<th>contraseña</th>
-			<th>tipo de usuario</th>
-			<th>opcion</th>
-			<th>opcion</th>
-		</tr>
-		</thead>"
+	printf(
+		"<table class='custom-table'>
+	<thead>
+	<tr>
+		<th>Nombre</th>
+		<th>Apellido paterno</th>
+		<th>Apellido materno</th>
+		<th>Username</th>
+		<th>Correo electrónico</th>
+		<th>Contraseña</th>
+		<th>Tipo</th>
+		<th>Opciones</th>
+	</tr>
+	</thead>"
 	);
 
-while ($obj = $resultado->fetch_object()) {
-	//echo $obj->nombre;
+	while ($obj = $resultado->fetch_object()) {
+		$tipoletra = 0;
+		if ($obj->tipo == 1) {
+			$tipoletra = "Administrador";
+		} else {
+			$tipoletra = "Usuario";
+		}
 
-	$tipoletra = 0;
-	if ($obj->tipo==1) {
-		$tipoletra = "administrador";
-	} else {
-		$tipoletra = "usuario";
-	}
-
-	printf("<tr>");
-	printf("<td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td>
+		printf("<tr>");
+		printf(
+			"<td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td>
 		<td>
-			<form class='formtable' action='edituser.php' method='get'>
-				<input type='hidden' name='idusuario' value='%s'>
-				<button class='btntable' type=submit>modificar</button>
-			</form>
-		</td>
-
-		<td>
-			<form class='formtable' action='deluser.php' method='get'>
-				<input type='hidden' name='idusuario' value='%s'>
-				<button class='btntable' type=submit>borrar</button>
-			</form>
+			<div class='options'>
+				<form class='formtable' action='edituser.php' method='get'>
+					<input type='hidden' name='idusuario' value='%s'>
+					<button class='btntable btn-edit' type='submit'>Editar</button>
+				</form>
+				<form class='formtable' action='deluser.php' method='get'>
+					<input type='hidden' name='idusuario' value='%s'>
+					<button class='btntable btn-delete' type='submit'>Eliminar</button>
+				</form>
+			</div>
 		</td>",
-		$obj->nombre,
-		$obj->apellido_paterno,
-		$obj->apellido_materno,
-		$obj->nick,
-		$obj->pass,
-		$tipoletra,
-		$obj->idusuario,
-		$obj->idusuario
-	);
+			$obj->nombre,
+			$obj->apellido_paterno,
+			$obj->apellido_materno,
+			$obj->user,
+			$obj->email,
+			$obj->pass,
+			$tipoletra,
+			$obj->idusuario,
+			$obj->idusuario
+		);
+	}
+	printf("</tr></table>");
+
+	?>
+	<?php include 'pie.php'; ?>
+<?php
 }
-printf("</tr></table>");
+?>
