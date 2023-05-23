@@ -29,7 +29,7 @@ if (@$_SESSION['admin'] == false) {
 		</main>
 
 		<footer>
-			<p>&copy; 2023 JUANIMAN</p>
+			<p>&copy; 2023 <a href="https://github.com/JUANIMAN">JUANIMAN</a></p>
 		</footer>
 	</body>
 
