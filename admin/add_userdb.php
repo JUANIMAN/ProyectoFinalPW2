@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $nm = $_POST['nombre'];
 $ap = $_POST['apellidop'];
 $am = $_POST['apellidom'];

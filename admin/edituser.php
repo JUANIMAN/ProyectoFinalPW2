@@ -5,8 +5,10 @@ if (@$_SESSION["admin"] == true) {
 ?>
 
 	<?php
-	$idreceiveduser = $_GET['idusuario'];
+
 	include "../connection/connection.php";
+
+	$idreceiveduser = $_GET['idusuario'];
 	$consulta = "SELECT * FROM files.usuario WHERE idusuario='" . $idreceiveduser . "'";
 	$resultado = $conn->query($consulta);
 	$obj = $resultado->fetch_object();

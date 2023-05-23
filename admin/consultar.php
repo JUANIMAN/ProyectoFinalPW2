@@ -1,7 +1,6 @@
 <?php
 session_start();
 if (@$_SESSION['admin'] == true) {
-	include "../connection/connection.php";
 	include 'cabecera.php';
 ?>
 
@@ -12,8 +11,10 @@ if (@$_SESSION['admin'] == true) {
 			<button type="submit">Buscar</button>
 		</form>
 	</div>
-	
+
 	<?php
+
+	include "../connection/connection.php";
 
 	if (isset($_GET['username']) && !empty($_GET['username'])) {
 		$username = $_GET['username'];
