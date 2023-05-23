@@ -5,31 +5,40 @@ if (@$_SESSION['admin'] == true) {
 	include 'cabecera.php';
 ?>
 
-	<div id="fname">
-		Hola <?php echo $_SESSION['fname'] ?>
+	<div class="container">
+		<div id="title">Consultar usuarios</div>
+		<form class="search-form" action="consultar.php" method="get">
+			<input type="text" name="username" placeholder="Buscar por username">
+			<button type="submit">Buscar</button>
+		</form>
 	</div>
-
-	<div id="titulo">Consultar usuarios</div>
-
+	
 	<?php
 
-	$consulta = "SELECT * FROM files.usuario";
+	if (isset($_GET['username']) && !empty($_GET['username'])) {
+		$username = $_GET['username'];
+
+		$consulta = "SELECT * FROM files.usuario WHERE user LIKE '%$username%'";
+	} else {
+		$consulta = "SELECT * FROM files.usuario";
+	}
+
 	$resultado = $conn->query($consulta);
 
 	printf(
 		"<table class='custom-table'>
-	<thead>
-	<tr>
-		<th>Nombre</th>
-		<th>Apellido paterno</th>
-		<th>Apellido materno</th>
-		<th>Username</th>
-		<th>Correo electrónico</th>
-		<th>Contraseña</th>
-		<th>Tipo</th>
-		<th>Opciones</th>
-	</tr>
-	</thead>"
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Apellido paterno</th>
+				<th>Apellido materno</th>
+				<th>Username</th>
+				<th>Correo electrónico</th>
+				<th>Contraseña</th>
+				<th>Tipo</th>
+				<th>Opciones</th>
+			</tr>
+		</thead>"
 	);
 
 	while ($obj = $resultado->fetch_object()) {

@@ -12,6 +12,7 @@
 <body>
 	<header>
 		<h1>Administrador de Usuarios</h1>
+		<p>Hola <?php echo $_SESSION['fname'] ?></p>
 		<nav>
 			<ul>
 				<li><a href="add_user.php">Agregar</a></li>
