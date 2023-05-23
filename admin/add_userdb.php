@@ -10,7 +10,7 @@ $ti = $_REQUEST['tipo'];
 
 include "../connection/connection.php";
 
-if (empty($nm) || empty($ap) || empty($un) || empty($em) || empty($pw)) {
+if (empty($nm) || empty($ap) || empty($am) || empty($un) || empty($em) || empty($pw)) {
 	echo "<script>alert('Por favor, llene todos los campos.');</script>";
 	echo "<script>window.history.back();</script>";
 } else {

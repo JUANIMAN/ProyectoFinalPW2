@@ -11,7 +11,7 @@
 
 <body>
 	<header>
-		<h1>Administrador de Usuarios</h1>
+		<h1>Administrar usuarios</h1>
 		<p>Hola <?php echo $_SESSION['fname'] ?></p>
 		<nav>
 			<ul>
