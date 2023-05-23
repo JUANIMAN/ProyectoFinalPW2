@@ -2,8 +2,8 @@
 
 //echo "recibi los datos";
 
-$usuariodado = $_REQUEST['user'];
-$clavedada = $_REQUEST['pass'];
+$usuariodado = $_POST['user'];
+$clavedada = $_POST['pass'];
 
 include "connection.php";
 

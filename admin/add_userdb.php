@@ -1,12 +1,12 @@
 <?php
 
-$nm = $_REQUEST['nombre'];
-$ap = $_REQUEST['apellidop'];
-$am = $_REQUEST['apellidom'];
-$un = $_REQUEST['user'];
-$em = $_REQUEST['email'];
-$pw = $_REQUEST['pass'];
-$ti = $_REQUEST['tipo'];
+$nm = $_POST['nombre'];
+$ap = $_POST['apellidop'];
+$am = $_POST['apellidom'];
+$un = $_POST['user'];
+$em = $_POST['email'];
+$pw = $_POST['pass'];
+$ti = $_POST['tipo'];
 
 include "../connection/connection.php";
 

@@ -5,7 +5,7 @@ if (@$_SESSION['admin'] == true) {
 ?>
 
   <div id="title">Agregar usuarios</div>
-  <form action="add_userdb.php" method="get">
+  <form action="add_userdb.php" method="post">
     <input name="nombre" type="text" placeholder="Nombre">
     <input name="apellidop" type="text" placeholder="Apellido paterno">
     <input name="apellidom" type="text" placeholder="Apellido materno">
