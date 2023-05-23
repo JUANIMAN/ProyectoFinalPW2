@@ -4,10 +4,6 @@ if (@$_SESSION["admin"] == true) {
 	include 'cabecera.php';
 ?>
 
-	<div id="fname">
-		Hola <?php echo $_SESSION['fname'] ?>
-	</div>
-
 	<?php
 	$idreceiveduser = $_GET['idusuario'];
 	include "../connection/connection.php";
@@ -16,7 +12,7 @@ if (@$_SESSION["admin"] == true) {
 	$obj = $resultado->fetch_object();
 	?>
 
-	<div id="titulo">Actualizar usuario</div>
+	<div id="title">Actualizar usuario</div>
 	<form method="get" action="updatedb.php">
 		<input type="hidden" name="iduser" value='<?php echo $idreceiveduser; ?>' />
 

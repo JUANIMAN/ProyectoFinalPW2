@@ -4,11 +4,7 @@ if (@$_SESSION['admin'] == true) {
   include 'cabecera.php';
 ?>
 
-  <div id="fname">
-    Hola <?php echo $_SESSION['fname'] ?>
-  </div>
-
-  <div id="titulo">Agregar usuarios</div>
+  <div id="title">Agregar usuarios</div>
   <form action="add_userdb.php" method="get">
     <input name="nombre" type="text" placeholder="Nombre">
     <input name="apellidop" type="text" placeholder="Apellido paterno">
